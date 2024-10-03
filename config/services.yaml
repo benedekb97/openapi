@@ -13,3 +13,7 @@ services:
   Benedekb\OpenAPI\Command\GenerateOpenAPICommand:
     arguments:
       $filePath: '%openapi.file_path%'
+
+  Benedekb\OpenAPI\Component\Generator\OpenApiGenerator:
+    arguments:
+      $skippedRoutes: '%openapi.skipped_routes%'

@@ -6,6 +6,7 @@ return static function (DefinitionConfigurator $definition): void {
     $definition->rootNode()
         ->children()
             ->scalarNode('file_path')->defaultValue('contracts/openapi.json')->end()
+            ->arrayNode('skipped_routes')->defaultValue(['/_error/*'])->end()
         ->end()
     ;
 };

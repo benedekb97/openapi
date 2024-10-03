@@ -19,7 +19,8 @@ class OpenAPIBundle extends AbstractBundle
     public function loadExtension(array $config, ContainerConfigurator $container, ContainerBuilder $builder): void
     {
         $container->parameters()
-            ->set('openapi.file_path', $config['file_path']);
+            ->set('openapi.file_path', $config['file_path'])
+            ->set('openapi.skipped_routes', $config['skipped_routes']);
 
         $container->import(__DIR__ . '/../config/services.yaml');
     }
