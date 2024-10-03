@@ -22,12 +22,14 @@ class ObjectGenerator
 
     public function generate(ObjectInterface $object): array
     {
-        if (null !== $object->getSchema()) {
-            if (!array_key_exists($object->getSchema()::class, $this->requiredSchemas)) {
-                $this->requiredSchemas[$object->getSchema()::class] = $this->requiredSchemas;
-            }
+        $object->setUp();
 
+        if (null !== $object->getSchema()) {
             $schemaName = (new ReflectionClass($object->getSchema()))->getShortName();
+
+            if (!array_key_exists($schemaName, $this->requiredSchemas)) {
+                $this->requiredSchemas[$schemaName] = $object->getSchema();
+            }
 
             return [
                 '$ref' => '#/components/schemas/' . $schemaName
@@ -119,11 +121,11 @@ class ObjectGenerator
         }
 
         if ($arrayItems->getSchema() instanceof SchemaInterface) {
-            if (!array_key_exists($arrayItems->getSchema()::class, $this->requiredSchemas)) {
-                $this->requiredSchemas[$arrayItems->getSchema()::class] = $this->requiredSchemas;
-            }
-
             $schemaName = (new ReflectionClass($arrayItems->getSchema()))->getShortName();
+
+            if (!array_key_exists($schemaName, $this->requiredSchemas)) {
+                $this->requiredSchemas[$schemaName] = $arrayItems->getSchema();
+            }
 
             return [
                 'type' => 'array',
