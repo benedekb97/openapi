@@ -26,7 +26,7 @@ final class GenerateOpenAPICommand extends Command
 
         $file = fopen($this->filePath, 'w');
 
-        fwrite($file, json_encode($openApi, JSON_PRETTY_PRINT));
+        fwrite($file, json_encode($openApi, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));
 
         fclose($file);
 
