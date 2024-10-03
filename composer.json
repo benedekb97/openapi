@@ -1,0 +1,28 @@
+{
+    "name": "benedekb97/openapi-bundle",
+    "description": "OpenAPI spec generator",
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Benedekb\\OpenAPI\\": "src/",
+            "Benedekb\\OpenAPI\\Tests": "tests/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Benedek Burgess",
+            "email": "benedekb97@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^8.0",
+        "symfony/routing": "^7.1",
+        "symfony/console": "^7.1",
+        "symfony/dependency-injection": "^7.1"
+    },
+    "require-dev": {
+        "symfony/http-kernel": "^7.1",
+        "phpunit/phpunit": "^11.3"
+    }
+}
