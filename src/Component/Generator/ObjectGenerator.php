@@ -30,9 +30,7 @@ class ObjectGenerator
             $schemaName = (new ReflectionClass($object->getSchema()))->getShortName();
 
             return [
-                'schema' => [
-                    '$ref' => '#/components/schemas/' . $schemaName
-                ]
+                '$ref' => '#/components/schemas/' . $schemaName
             ];
         }
 
@@ -139,5 +137,10 @@ class ObjectGenerator
             'type' => 'array',
             'items' => $this->handleProperty($arrayItems->getItems()),
         ];
+    }
+
+    public function getRequiredSchemas(): array
+    {
+        return $this->requiredSchemas;
     }
 }

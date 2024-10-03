@@ -6,7 +6,7 @@ namespace Benedekb\OpenAPI\Component\Generator;
 
 use Benedekb\OpenAPI\Component\RequestBodyInterface;
 
-class RequestBodyGenerator
+readonly class RequestBodyGenerator
 {
     public function __construct(
         private ObjectGenerator $objectGenerator,
@@ -23,5 +23,10 @@ class RequestBodyGenerator
             ],
             'required' => $requestBody->isRequired(),
         ];
+    }
+
+    public function getRequiredSchemas(): array
+    {
+        return $this->objectGenerator->getRequiredSchemas();
     }
 }

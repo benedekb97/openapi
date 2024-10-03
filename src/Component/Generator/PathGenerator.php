@@ -55,4 +55,9 @@ readonly class PathGenerator
 
         return array_filter($pathData);
     }
+
+    public function getRequiredSchemas(): array
+    {
+        return $this->operationGenerator->getRequiredSchemas();
+    }
 }

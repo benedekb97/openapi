@@ -7,7 +7,6 @@ namespace Benedekb\OpenAPI\Component\Generator;
 use Benedekb\OpenAPI\Component\Enum\ParameterLocation;
 use Benedekb\OpenAPI\Component\OpenApiDefinitionInterface;
 use Benedekb\OpenAPI\Component\Parameter;
-use Benedekb\OpenAPI\Component\Response;
 use Benedekb\OpenAPI\Component\ResponseInterface;
 use Benedekb\OpenAPI\Component\Tag;
 
@@ -72,5 +71,13 @@ class OperationGenerator
         }
 
         return $parameters;
+    }
+
+    public function getRequiredSchemas(): array
+    {
+        return array_merge(
+            $this->responseGenerator->getRequiredSchemas(),
+            $this->requestBodyGenerator->getRequiredSchemas()
+        );
     }
 }

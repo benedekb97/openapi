@@ -6,7 +6,7 @@ namespace Benedekb\OpenAPI\Component\Generator;
 
 use Benedekb\OpenAPI\Component\ResponseInterface;
 
-class ResponseGenerator
+readonly class ResponseGenerator
 {
     public function __construct(
         private ObjectGenerator $objectGenerator,
@@ -22,5 +22,10 @@ class ResponseGenerator
                 ]
             ]
         ];
+    }
+
+    public function getRequiredSchemas(): array
+    {
+        return $this->objectGenerator->getRequiredSchemas();
     }
 }

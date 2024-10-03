@@ -4,7 +4,10 @@ declare(strict_types=1);
 
 namespace Benedekb\OpenAPI\Component\Generator;
 
+use Benedekb\OpenAPI\Component\Collector\SchemaCollector;
 use Benedekb\OpenAPI\Component\Configuration\GenerationConfig;
+use Benedekb\OpenAPI\Component\Schema\AbstractSchema;
+use Benedekb\OpenAPI\Component\Schema\SchemaInterface;
 use Symfony\Component\Routing\Route;
 use Symfony\Component\Routing\RouterInterface;
 
@@ -14,6 +17,8 @@ readonly class OpenApiGenerator
         private RouterInterface $router,
         private GenerationConfig $config,
         private PathGenerator $pathGenerator,
+        private SchemaCollector $schemaCollector,
+        private ObjectGenerator $objectGenerator,
     ) {}
 
     public function generate(): array
@@ -32,6 +37,15 @@ readonly class OpenApiGenerator
             }
         }
 
+        $schemas = $this->schemaCollector->collect($this->pathGenerator->getRequiredSchemas());
+
+        $schemas = array_map(
+            function (AbstractSchema $schema): array
+            {
+                return $this->objectGenerator->generate($schema);
+            },
+            $schemas
+        );
 
         return [
             'openapi' => $this->config->getOpenApiVersion(),
@@ -41,6 +55,9 @@ readonly class OpenApiGenerator
                 'version' => $this->config->getSpecificationVersion()
             ],
             'paths' => $paths,
+            'components' => [
+                'schemas' => $schemas
+            ]
         ];
     }
 
