@@ -16,8 +16,8 @@ services:
 
   Benedekb\OpenAPI\Component\Configuration\GenerationConfig:
     arguments:
-      $skippedRoutes: '%openapi.skipped_routes'
-      $openApiVersion: '%openapi.oas_version'
+      $skippedRoutes: '%openapi.skipped_routes%'
+      $openApiVersion: '%openapi.oas_version%'
       $specificationVersion: '%openapi.version%'
       $serviceName: '%openapi.name%'
       $serviceDescription: '%openapi.description%'
