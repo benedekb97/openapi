@@ -12,16 +12,22 @@ readonly class OpenApiGenerator
 {
     public function __construct(
         private RouterInterface $router,
-        private GenerationConfig $config
+        private GenerationConfig $config,
+        private PathGenerator $pathGenerator,
     ) {}
 
     public function generate(): array
     {
+        $paths = [];
+
         foreach ($this->router->getRouteCollection() as $route) {
             if ($this->shouldSkipRoute($route)) {
                 continue;
             }
+
+            $paths[$route->getPath()] = $this->pathGenerator->generate($route);
         }
+
 
         return [
             'openapi' => $this->config->getOpenApiVersion(),
@@ -29,7 +35,8 @@ readonly class OpenApiGenerator
                 'title' => $this->config->getServiceName(),
                 'description' => $this->config->getServiceDescription(),
                 'version' => $this->config->getSpecificationVersion()
-            ]
+            ],
+            'paths' => $paths,
         ];
     }
 

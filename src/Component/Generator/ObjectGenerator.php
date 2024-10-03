@@ -10,6 +10,7 @@ use Benedekb\OpenAPI\Component\Schema\Types\ArrayType;
 use Benedekb\OpenAPI\Component\Schema\Types\BooleanType;
 use Benedekb\OpenAPI\Component\Schema\Types\IntegerType;
 use Benedekb\OpenAPI\Component\Schema\Types\NumberType;
+use Benedekb\OpenAPI\Component\Schema\Types\ObjectInterface;
 use Benedekb\OpenAPI\Component\Schema\Types\ObjectType;
 use Benedekb\OpenAPI\Component\Schema\Types\StringType;
 use Benedekb\OpenAPI\Component\Schema\Types\Type;
@@ -19,7 +20,7 @@ class ObjectGenerator
 {
     private array $requiredSchemas = [];
 
-    public function generate(ObjectType $object): array
+    public function generate(ObjectInterface $object): array
     {
         if (null !== $object->getSchema()) {
             if (!array_key_exists($object->getSchema()::class, $this->requiredSchemas)) {

@@ -19,4 +19,8 @@ interface OpenApiDefinitionInterface
     public function getDescription(): ?string;
 
     public function getOperationId(): ?string;
+
+    public function getPathSummary(): ?string;
+
+    public function getPathDescription(): ?string;
 }

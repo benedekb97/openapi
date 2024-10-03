@@ -7,7 +7,7 @@ namespace Benedekb\OpenAPI\Component\Schema\Types;
 use Benedekb\OpenAPI\Component\Exception\DuplicatePropertyException;
 use Benedekb\OpenAPI\Component\Schema\SchemaInterface;
 
-class ObjectType extends Type
+class ObjectType extends Type implements ObjectInterface
 {
     private array $properties = [];
 
