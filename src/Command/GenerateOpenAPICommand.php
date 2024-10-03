@@ -12,8 +12,16 @@ use Symfony\Component\Console\Output\OutputInterface;
 #[AsCommand(name: 'openapi:generate')]
 class GenerateOpenAPICommand extends Command
 {
+    public function __construct(
+        private string $filePath
+    ) {
+        parent::__construct();
+    }
+
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
+        $output->writeln($this->filePath);
+
         return Command::SUCCESS;
     }
 }
