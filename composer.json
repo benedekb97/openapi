@@ -1,5 +1,5 @@
 {
-    "name": "benedekb97/openapi-bundle",
+    "name": "benedekb/openapi-bundle",
     "description": "OpenAPI spec generator",
     "type": "symfony-bundle",
     "license": "MIT",
