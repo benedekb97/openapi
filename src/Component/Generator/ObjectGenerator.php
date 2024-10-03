@@ -42,10 +42,10 @@ class ObjectGenerator
             $properties[$propertyName] = $this->handleProperty($property);
         }
 
-        return [
+        return array_filter([
             'type' => 'object',
             'properties' => $properties,
-        ];
+        ]);
     }
 
     private function handleProperty(Type $type): array

@@ -17,7 +17,7 @@ class ResponseGenerator
         return [
             'description' => $response->getDescription(),
             'content' => [
-                'application/json' => [
+                $response->getContentType()->value => [
                     'schema' => $this->objectGenerator->generate($response),
                 ]
             ]

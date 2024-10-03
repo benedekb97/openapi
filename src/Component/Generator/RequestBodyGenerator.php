@@ -17,7 +17,7 @@ class RequestBodyGenerator
         return [
             'description' => $requestBody->getDescription(),
             'content' => [
-                'application/json' => [
+                $requestBody->getContentType()->value => [
                     'schema' => $this->objectGenerator->generate($requestBody),
                 ]
             ],
