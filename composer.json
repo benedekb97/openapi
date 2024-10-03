@@ -6,7 +6,7 @@
     "autoload": {
         "psr-4": {
             "Benedekb\\OpenAPI\\": "src/",
-            "Benedekb\\OpenAPI\\Tests": "tests/"
+            "Benedekb\\OpenAPI\\Tests\\": "tests/"
         }
     },
     "authors": [
