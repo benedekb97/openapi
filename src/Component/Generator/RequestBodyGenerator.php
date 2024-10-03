@@ -16,7 +16,11 @@ class RequestBodyGenerator
     {
         return [
             'description' => $requestBody->getDescription(),
-            'content' => $this->objectGenerator->generate($requestBody),
+            'content' => [
+                'application/json' => [
+                    'schema' => $this->objectGenerator->generate($requestBody),
+                ]
+            ],
             'required' => $requestBody->isRequired(),
         ];
     }

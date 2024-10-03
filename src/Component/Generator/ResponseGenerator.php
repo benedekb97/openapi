@@ -16,7 +16,11 @@ class ResponseGenerator
     {
         return [
             'description' => $response->getDescription(),
-            'content' => $this->objectGenerator->generate($response)
+            'content' => [
+                'application/json' => [
+                    'schema' => $this->objectGenerator->generate($response),
+                ]
+            ]
         ];
     }
 }
