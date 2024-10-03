@@ -53,6 +53,6 @@ readonly class PathGenerator
             }
         }
 
-        return $pathData;
+        return array_filter($pathData);
     }
 }

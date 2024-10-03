@@ -39,7 +39,7 @@ class OperationGenerator
                 $this->responseGenerator->generate($response);
         }
 
-        return $operation;
+        return array_filter($operation);
     }
 
     private function generateTags(OpenApiDefinitionInterface $definition): array

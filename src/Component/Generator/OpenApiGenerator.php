@@ -25,7 +25,11 @@ readonly class OpenApiGenerator
                 continue;
             }
 
-            $paths[$route->getPath()] = $this->pathGenerator->generate($route);
+            $pathData = $this->pathGenerator->generate($route);
+
+            if (!empty($pathData)) {
+                $paths[$route->getPath()] = $this->pathGenerator->generate($route);
+            }
         }
 
 

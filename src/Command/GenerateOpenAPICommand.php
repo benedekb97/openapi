@@ -22,7 +22,13 @@ final class GenerateOpenAPICommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $this->openApiGenerator->generate();
+        $openApi = $this->openApiGenerator->generate();
+
+        $file = fopen($this->filePath, 'w');
+
+        fwrite($file, json_encode($openApi, JSON_PRETTY_PRINT));
+
+        fclose($file);
 
         return Command::SUCCESS;
     }
