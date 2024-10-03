@@ -3,7 +3,7 @@ services:
     autowire: true
     autoconfigure: true
 
-  Benedekb\OpenAPI:
+  Benedekb\OpenAPI\:
     resource: '../src/'
 
   Benedekb\OpenAPI\Command\GenerateOpenAPICommand:
