@@ -20,7 +20,11 @@ class OpenAPIBundle extends AbstractBundle
     {
         $container->parameters()
             ->set('openapi.file_path', $config['file_path'])
-            ->set('openapi.skipped_routes', $config['skipped_routes']);
+            ->set('openapi.skipped_routes', $config['skipped_routes'])
+            ->set('openapi.oas_version', $config['oas_version'])
+            ->set('openapi.version', $config['version'])
+            ->set('openapi.name', $config['name'])
+            ->set('openapi.description', $config['description']);
 
         $container->import(__DIR__ . '/../config/services.yaml');
     }

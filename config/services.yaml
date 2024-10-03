@@ -14,6 +14,10 @@ services:
     arguments:
       $filePath: '%openapi.file_path%'
 
-  Benedekb\OpenAPI\Component\Generator\OpenApiGenerator:
+  Benedekb\OpenAPI\Component\Configuration\GenerationConfig:
     arguments:
-      $skippedRoutes: '%openapi.skipped_routes%'
+      $skippedRoutes: '%openapi.skipped_routes'
+      $openApiVersion: '%openapi.oas_version'
+      $specificationVersion: '%openapi.version%'
+      $serviceName: '%openapi.name%'
+      $serviceDescription: '%openapi.description%'
