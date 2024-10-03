@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Benedekb\OpenAPI\Attribute;
+namespace Benedekb\OpenAPI\Component\Attribute;
 
 use Attribute;
 use Benedekb\OpenAPI\Component\Enum\RequestMethod;

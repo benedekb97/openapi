@@ -5,6 +5,10 @@ services:
 
   Benedekb\OpenAPI\:
     resource: '../src/'
+    exclude:
+      - '../src/Component/Schema'
+      - '../src/Component/Enum'
+      - '../src/Component/Attribute'
 
   Benedekb\OpenAPI\Command\GenerateOpenAPICommand:
     arguments:
