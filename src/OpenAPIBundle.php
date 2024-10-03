@@ -13,7 +13,7 @@ class OpenAPIBundle extends AbstractBundle
 {
     public function configure(DefinitionConfigurator $definition): void
     {
-        $definition->import('../config/benedekb_openapi.yaml');
+        $definition->import('../config/openapi.php');
     }
 
     public function loadExtension(array $config, ContainerConfigurator $container, ContainerBuilder $builder): void
