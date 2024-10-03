@@ -13,12 +13,14 @@ class OpenAPIBundle extends AbstractBundle
 {
     public function configure(DefinitionConfigurator $definition): void
     {
-        $definition->import('../config/openapi.php');
+        $definition->import(__DIR__ . '/../config/openapi.php');
     }
 
     public function loadExtension(array $config, ContainerConfigurator $container, ContainerBuilder $builder): void
     {
         $container->parameters()
-            ->set('openapi.file_path', $config['openapi']['file_path']);
+            ->set('openapi.file_path', $config['file_path']);
+
+        $container->import(__DIR__ . '/../config/services.yaml');
     }
 }

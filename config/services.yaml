@@ -1,0 +1,11 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+
+  Benedekb\OpenAPI:
+    resource: '../src/'
+
+  Benedekb\OpenAPI\Command\GenerateOpenAPICommand:
+    arguments:
+      $filePath: '%openapi.file_path%'
